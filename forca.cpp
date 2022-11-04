@@ -43,6 +43,7 @@ int main()
         }
         cout << endl;
 
+        cout << "Seu chute: ";
         char chute;
         cin >> chute;
 
@@ -56,5 +57,6 @@ int main()
         {
             cout << "Voce errou! Seu chute nao esta na palavra" << endl;
         }
+        cout << endl;
     }
 }
