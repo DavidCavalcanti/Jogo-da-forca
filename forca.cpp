@@ -20,17 +20,20 @@ bool letra_existe(char chute)
     return false;
 }
 
-bool nao_acertou(){
+bool nao_acertou()
+{
     for (char letra : PALAVRA_SECRETA)
     {
-        if(!chutou[letra]){
+        if (!chutou[letra])
+        {
             return true;
         }
     }
     return false;
 }
 
-bool nao_enforcou(){
+bool nao_enforcou()
+{
     return chutes_errados.size() < 5; // se for menor que 5 retorna verdadeiro
 }
 
@@ -79,5 +82,16 @@ int main()
             chutes_errados.push_back(chute);
         }
         cout << endl;
+    }
+
+    cout << "Fim de jogo!" << endl;
+    cout << "A palavra eh: " << PALAVRA_SECRETA << endl;
+    if (nao_acertou())
+    {
+        cout << "Voce perdeu!" << endl;
+    }
+    else
+    {
+        cout << "Voce acertou a palavra secreta!" << endl;
     }
 }
