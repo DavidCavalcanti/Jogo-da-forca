@@ -37,36 +37,42 @@ bool nao_enforcou()
     return chutes_errados.size() < 5; // se for menor que 5 retorna verdadeiro
 }
 
-int main()
+void exibir_cabecalho()
 {
-
     cout << "*********************" << endl;
     cout << "*** Jogo da Forca ***" << endl;
     cout << "*********************" << endl
          << endl;
+}
 
-    while (nao_acertou() && nao_enforcou())
+void imprime_chutes_errados()
+{
+    cout << "Chutes errados: ";
+    for (char letra : chutes_errados)
     {
-        cout << "Chutes errados: ";
-        for (char letra : chutes_errados)
+        cout << letra << " ";
+    }
+    cout << endl;
+}
+
+void imprime_palavra()
+{
+    for (char letra : PALAVRA_SECRETA)
+    {
+        if (chutou[letra])
         {
             cout << letra << " ";
         }
-        cout << endl;
-        for (char letra : PALAVRA_SECRETA)
+        else
         {
-            if (chutou[letra])
-            {
-                cout << letra << " ";
-            }
-            else
-            {
-                cout << "_ ";
-            }
+            cout << "_ ";
         }
-        cout << endl;
+    }
+    cout << endl;
+}
 
-        cout << "Seu chute: ";
+void chute_usuario(){
+    cout << "Seu chute: ";
         char chute;
         cin >> chute;
 
@@ -82,6 +88,20 @@ int main()
             chutes_errados.push_back(chute);
         }
         cout << endl;
+}
+
+int main()
+{
+
+    exibir_cabecalho();
+
+    while (nao_acertou() && nao_enforcou())
+    {
+        imprime_chutes_errados();
+
+        imprime_palavra();
+
+        chute_usuario();
     }
 
     cout << "Fim de jogo!" << endl;
